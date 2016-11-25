@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ejercicio8_fragments</string>
+    <string name="blank_1">Hello blank fragment 1</string>
+    <string name="blank_2">Hello blank fragment 2</string>
+    <string name="btn_swap_fragment_text">Swap fragment </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
