@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements FragmentOne.OnFir
             fragTransaction.replace(R.id.linearLayoutMainLandscape, new FragmentOne(), "first_fragment");
             isFragmentOne=true;
             fragTransaction.commit();
-
             final Button swapBtn = (Button)this.findViewById(R.id.btnSwapFragment);
             swapBtn.setOnClickListener(this);
         }
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements FragmentOne.OnFir
         }
         else{
             this.randNumber = rNumber;
+            Log.e("TAG","random number "+this.randNumber);
         }
     }
 
@@ -66,9 +67,12 @@ public class MainActivity extends AppCompatActivity implements FragmentOne.OnFir
                 fragTransaction.replace(R.id.linearLayoutMainLandscape, new SecondFragment(),"second_fragment");
                 fragTransaction.commit();
 
-                /*FragmentManager fm = getSupportFragmentManager();
-                SecondFragment mySecondFragment = (SecondFragment) fm.findFragmentById(R.id.fragment_second);
-                mySecondFragment.setRnumberText(rNumber);*/
+
+
+
+                //while(mySecondFragment.datatxt==null);
+                //mySecondFragment.setRnumberText(randNumber);
+               //mySecondFragment.getData(this.randNumber);
                 isFragmentOne = false;
             }
             else
@@ -78,5 +82,10 @@ public class MainActivity extends AppCompatActivity implements FragmentOne.OnFir
                 isFragmentOne = true;
             }
         }
+    }
+
+    @Override
+    public long setTextNumber() {
+        return randNumber;
     }
 }

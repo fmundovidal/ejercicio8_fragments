@@ -1,5 +1,6 @@
 package com.example.a5alumno.ejercicio8_fragments;
 
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -18,21 +19,22 @@ import java.util.Random;
 public class SecondFragment extends Fragment{
 
     public interface getDataInterface{
+        long setTextNumber();
     }
 
     private getDataInterface mDataInterface;
     public TextView datatxt;
-    private long num;
+    private long num=0;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         try{
             this.mDataInterface = (getDataInterface) context;
         }catch(ClassCastException e){
-            throw new ClassCastException(this.getActivity().toString()+" must implement OnFirstFragmentInterface");
+            throw new ClassCastException(this.getActivity().toString()+" must implement OnSecondFragmentInterface");
         }
+
     }
 
     @Override
@@ -52,15 +54,20 @@ public class SecondFragment extends Fragment{
 
     public void setRnumberText(long number){
 
-       datatxt.setText(Long.toString(number));
+        //this.num=number;
+        datatxt.setText(Long.toString(number));
+       /* while(this.datatxt==null){
+
+        }
+       datatxt.setText(Long.toString(number));*/
 
     }
 
-    public void getData(long number){
-        this.num=number;
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+       //datatxt.setText(Long.toString(this.num));
+        this.num=mDataInterface.setTextNumber();
+        datatxt.setText(Long.toString(this.num));
     }
-   /*public int getRandomNumber(){
-        return this.numGenerator.nextInt(100);
-    }*/
-
 }
